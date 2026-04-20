@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+    --tw-color-primary: #00f0ff;
+}
+
+* {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+body {
+    font-family: 'Inter', system_ui, sans-serif;
+}
+
+.title-font {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.hero-bg {
+    background: linear-gradient(135deg, #0a0a2a 0%, #1a1a4a 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.nav-link {
+    position: relative;
+}
+
+.nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -2px;
+    left: 0;
+    background-color: #00f0ff;
+}
+
+.nav-link:hover:after {
+    width: 100%;
+}
+
+.card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 25px 50px -12px rgb(0 240 255);
+}
+
+.modal {
+    animation: modalPop 0.3s ease forwards;
+}
+
+@keyframes modalPop {
+    0% { transform: scale(0.95); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.chat-bubble-user {
+    background: #00f0ff;
+    color: #0a0a2a;
+    border-radius: 20px 20px 4px 20px;
+}
+
+.chat-bubble-bot {
+    background: #1e2937;
+    border-radius: 20px 20px 20px 4px;
+}
