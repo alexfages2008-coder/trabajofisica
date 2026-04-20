@@ -13,7 +13,7 @@
 </head>
 <body class="bg-[#05050f] text-white">
 
-    <!-- NAVBAR (igual que antes) -->
+    <!-- NAVBAR -->
     <nav class="bg-[#0a0a2a]/90 backdrop-blur-lg border-b border-[#00f0ff]/20 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -49,26 +49,89 @@
         </div>
     </nav>
 
-    <!-- HERO, TEMAS, CHATBOT y FOOTER se mantienen igual que en la versión anterior -->
+    <!-- HERO -->
+    <section id="home" class="hero-bg min-h-screen flex items-center relative">
+        <canvas id="particleCanvas" class="particle-canvas"></canvas>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 py-24">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 bg-white/10 text-[#00f0ff] text-sm font-medium px-6 py-3 rounded-3xl mb-6">
+                        <i class="fas fa-atom animate-spin"></i>
+                        CURRÍCULO OFICIAL 2º BACHILLERATO
+                    </div>
+                    <h1 class="title-font text-7xl md:text-8xl font-bold leading-none tracking-tighter mb-6">
+                        FÍSICA<br>2º BACHILLERATO
+                    </h1>
+                    <p class="text-2xl text-gray-300 mb-10 max-w-md">
+                        Interacción gravitatoria • Electromagnetismo • Ondas • Óptica • Física moderna
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="navigateTo('temas')" class="bg-[#00f0ff] hover:bg-[#00d0ff] text-[#0a0a2a] font-semibold px-10 py-5 rounded-3xl text-xl flex items-center gap-3">
+                            <i class="fas fa-rocket"></i> EXPLORAR TEMAS
+                        </button>
+                        <button onclick="navigateTo('quiz')" class="border-2 border-[#00f0ff] hover:bg-[#00f0ff]/10 font-semibold px-10 py-5 rounded-3xl text-xl flex items-center gap-3">
+                            <i class="fas fa-brain"></i> PROBAR QUIZ
+                        </button>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="bg-gradient-to-br from-[#00f0ff]/10 to-purple-500/10 backdrop-blur-xl border border-[#00f0ff]/30 rounded-3xl p-8 shadow-2xl">
+                        <div class="aspect-video bg-[#0a0a2a] rounded-2xl flex items-center justify-center relative overflow-hidden">
+                            <div class="text-center">
+                                <div class="text-8xl mb-4 animate-bounce">🌌</div>
+                                <p class="text-[#00f0ff] font-mono text-sm tracking-[4px]">SIMULACIÓN EN TIEMPO REAL</p>
+                                <p class="text-3xl font-light mt-2">Campo gravitatorio + inducción electromagnética</p>
+                            </div>
+                            <canvas id="heroCanvas" class="absolute inset-0 w-full h-full opacity-30"></canvas>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-white text-[#0a0a2a] text-sm font-bold px-8 py-4 rounded-3xl shadow-xl flex items-center gap-3">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                        100% interactivo • 100% gratis
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- QUIZ SECTION (igual) -->
+    <!-- TEMAS (resumido) -->
+    <section id="temas" class="max-w-7xl mx-auto px-6 py-24">
+        <div class="text-center mb-16">
+            <h2 class="title-font text-5xl font-bold mb-4">Los grandes bloques del curso</h2>
+            <p class="text-xl text-gray-400">Todo el temario oficial de 2º de Bachillerato</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div onclick="showTopicModal(1)" class="card-hover bg-[#111827] border border-[#00f0ff]/20 rounded-3xl p-8 cursor-pointer">
+                <div class="text-7xl mb-6">🌍</div>
+                <h3 class="text-3xl font-semibold mb-2">Interacción gravitatoria</h3>
+                <p class="text-gray-400 mb-6">Ley de Newton, campo gravitatorio, satélites y órbitas.</p>
+                <div class="text-[#00f0ff] text-sm font-medium">4 temas • Ver contenido <i class="fas fa-arrow-right"></i></div>
+            </div>
+            <!-- Puedes añadir los otros 3 cards si quieres, pero no es necesario para el quiz -->
+        </div>
+    </section>
+
+    <!-- QUIZ - COMPLETO Y FUNCIONAL -->
     <section id="quiz" class="bg-[#0a0a2a] py-24">
         <div class="max-w-4xl mx-auto px-6">
             <div class="text-center mb-12">
                 <h2 class="title-font text-5xl font-bold mb-4">¿Estás listo para el examen?</h2>
-                <p class="text-gray-400">Quiz de 10 preguntas • Temario completo de 2º Bachillerato</p>
+                <p class="text-gray-400">Quiz de 10 preguntas • Temario completo</p>
             </div>
             <div id="quiz-container" class="bg-[#111827] rounded-3xl p-10 shadow-2xl">
+
+                <!-- Pantalla inicial -->
                 <div id="quiz-start" class="text-center py-12">
-                    <i class="fas fa-question-circle text-9xl text-[#00f0ff] mb-8 opacity-80"></i>
+                    <i class="fas fa-question-circle text-9xl text-[#00f0ff] mb-8"></i>
                     <h3 class="text-4xl font-semibold mb-6">¡Comienza el Quiz!</h3>
-                    <p class="text-xl text-gray-400 mb-10">Responde correctamente y demuestra que dominas la Física de 2º Bachillerato</p>
+                    <p class="text-xl text-gray-400 mb-10">Responde correctamente y demuestra que dominas la Física</p>
                     <button onclick="startQuiz()" 
                             class="bg-[#00f0ff] text-[#0a0a2a] text-2xl font-bold px-16 py-6 rounded-3xl flex items-center gap-4 mx-auto hover:scale-105">
                         <i class="fas fa-play"></i> INICIAR QUIZ
                     </button>
                 </div>
 
+                <!-- Preguntas -->
                 <div id="quiz-questions" class="hidden">
                     <div class="flex justify-between mb-8">
                         <div id="question-counter" class="font-mono text-[#00f0ff]"></div>
@@ -80,11 +143,12 @@
                     <div id="options-container" class="grid grid-cols-1 gap-4"></div>
                     <div class="mt-10 flex justify-between items-center">
                         <div id="feedback" class="text-lg font-medium"></div>
-                        <button onclick="nextQuestion()" id="next-btn"
+                        <button onclick="nextQuestion()" id="next-btn" 
                                 class="hidden bg-[#00f0ff] text-[#0a0a2a] px-10 py-4 rounded-3xl font-semibold">SIGUIENTE →</button>
                     </div>
                 </div>
 
+                <!-- Resultados -->
                 <div id="quiz-results" class="hidden text-center py-12">
                     <div id="score-circle" class="mx-auto w-48 h-48 rounded-full border-8 border-[#00f0ff] flex items-center justify-center text-8xl font-bold mb-8"></div>
                     <h3 class="text-4xl font-bold mb-2">¡Tu puntuación!</h3>
@@ -96,7 +160,49 @@
         </div>
     </section>
 
-    <!-- El resto del HTML (chatbot, footer y modal) es igual que antes -->
+    <!-- CHATBOT (simple) -->
+    <section id="chatbot" class="max-w-7xl mx-auto px-6 py-24">
+        <div class="text-center mb-12">
+            <h2 class="title-font text-5xl font-bold mb-4">Chatbot de Física</h2>
+            <p class="text-xl text-gray-400">Pregúntame cualquier duda</p>
+        </div>
+        <div class="max-w-2xl mx-auto bg-[#111827] rounded-3xl overflow-hidden border border-[#00f0ff]/30">
+            <div class="bg-[#0a0a2a] px-8 py-5 flex items-center gap-4">
+                <div class="w-9 h-9 bg-gradient-to-br from-cyan-400 to-purple-400 rounded-2xl flex items-center justify-center text-2xl">🤖</div>
+                <div><p class="font-semibold">Físico IA</p></div>
+            </div>
+            <div id="chat-messages" class="h-96 p-6 overflow-y-auto space-y-6 bg-[#111827]">
+                <div class="flex gap-4">
+                    <div class="text-4xl">🤖</div>
+                    <div class="chat-bubble-bot max-w-[75%] p-5">¡Hola! Pregúntame sobre gravedad, electromagnetismo, ondas...</div>
+                </div>
+            </div>
+            <div class="p-5 border-t border-[#00f0ff]/20 flex gap-4">
+                <input id="chat-input" onkeydown="if(event.key === 'Enter') sendMessage()" 
+                       type="text" placeholder="Ej: ¿Cuál es la ley de gravitación universal?" 
+                       class="flex-1 bg-white/10 border border-white/20 focus:border-[#00f0ff] rounded-3xl px-8 py-5 outline-none">
+                <button onclick="sendMessage()" class="bg-[#00f0ff] text-[#0a0a2a] w-14 h-14 rounded-3xl flex items-center justify-center text-3xl">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-gray-400">Página de Física 2º Bachillerato para GitHub Pages</p>
+        </div>
+    </footer>
+
+    <!-- MODAL -->
+    <div id="topicModal" onclick="if(event.target.id === 'topicModal') hideTopicModal()" 
+         class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-[9999] flex items-center justify-center">
+        <div onclick="event.stopImmediatePropagation()" class="modal bg-[#111827] max-w-2xl w-full mx-4 rounded-3xl p-10">
+            <div id="modal-content"></div>
+            <button onclick="hideTopicModal()" class="mt-8 mx-auto block text-[#00f0ff]">CERRAR</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
