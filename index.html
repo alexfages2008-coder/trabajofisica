@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Física 2º Bachillerato • Explora el Universo</title>
-    
+   
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-    
+   
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-[#05050f] text-white">
-
     <!-- NAVBAR -->
     <nav class="bg-[#0a0a2a]/90 backdrop-blur-lg border-b border-[#00f0ff]/20 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
@@ -38,7 +37,7 @@
                 <i class="fas fa-bars"></i>
             </button>
         </div>
-        
+       
         <div id="mobileMenu" class="hidden md:hidden bg-[#0a0a2a] border-t border-[#00f0ff]/20 px-6 py-6">
             <div class="flex flex-col gap-6 text-lg">
                 <a onclick="navigateTo('home');toggleMobileMenu()" class="flex items-center gap-3"><i class="fas fa-home"></i> Inicio</a>
@@ -48,7 +47,6 @@
             </div>
         </div>
     </nav>
-
     <!-- HERO -->
     <section id="home" class="hero-bg min-h-screen flex items-center relative">
         <canvas id="particleCanvas" class="particle-canvas"></canvas>
@@ -63,7 +61,7 @@
                         FÍSICA<br>2º BACHILLERATO
                     </h1>
                     <p class="text-2xl text-gray-300 mb-10 max-w-md">
-                        Interacción gravitatoria • Electromagnetismo • Ondas • Óptica • Física moderna
+                        Interacción gravitatoria • Campo electromagnético • Vibraciones y ondas • Óptica • Física moderna
                     </p>
                     <div class="flex flex-wrap gap-4">
                         <button onclick="navigateTo('temas')" class="bg-[#00f0ff] hover:bg-[#00d0ff] text-[#0a0a2a] font-semibold px-10 py-5 rounded-3xl text-xl flex items-center gap-3">
@@ -93,24 +91,46 @@
             </div>
         </div>
     </section>
-
-    <!-- TEMAS (resumido) -->
+    <!-- TEMAS (COMPLETO) -->
     <section id="temas" class="max-w-7xl mx-auto px-6 py-24">
         <div class="text-center mb-16">
             <h2 class="title-font text-5xl font-bold mb-4">Los grandes bloques del curso</h2>
-            <p class="text-xl text-gray-400">Todo el temario oficial de 2º de Bachillerato</p>
+            <p class="text-xl text-gray-400">Temario completo oficial de 2º de Bachillerato (LOMLOE)</p>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Bloque 1: Interacción gravitatoria -->
             <div onclick="showTopicModal(1)" class="card-hover bg-[#111827] border border-[#00f0ff]/20 rounded-3xl p-8 cursor-pointer">
                 <div class="text-7xl mb-6">🌍</div>
                 <h3 class="text-3xl font-semibold mb-2">Interacción gravitatoria</h3>
-                <p class="text-gray-400 mb-6">Ley de Newton, campo gravitatorio, satélites y órbitas.</p>
+                <p class="text-gray-400 mb-6">Ley de Newton, campo gravitatorio, momento angular, energía en campos gravitatorios, leyes de Kepler, satélites y órbitas.</p>
                 <div class="text-[#00f0ff] text-sm font-medium">4 temas • Ver contenido <i class="fas fa-arrow-right"></i></div>
             </div>
-            <!-- Puedes añadir los otros 3 cards si quieres, pero no es necesario para el quiz -->
+
+            <!-- Bloque 2: Campo electromagnético -->
+            <div onclick="showTopicModal(2)" class="card-hover bg-[#111827] border border-[#00f0ff]/20 rounded-3xl p-8 cursor-pointer">
+                <div class="text-7xl mb-6">⚡</div>
+                <h3 class="text-3xl font-semibold mb-2">Campo electromagnético</h3>
+                <p class="text-gray-400 mb-6">Campo eléctrico y magnético, fuerzas sobre cargas, inducción electromagnética, ecuaciones de Maxwell y aplicaciones tecnológicas.</p>
+                <div class="text-[#00f0ff] text-sm font-medium">5 temas • Ver contenido <i class="fas fa-arrow-right"></i></div>
+            </div>
+
+            <!-- Bloque 3: Vibraciones y ondas + Óptica -->
+            <div onclick="showTopicModal(3)" class="card-hover bg-[#111827] border border-[#00f0ff]/20 rounded-3xl p-8 cursor-pointer">
+                <div class="text-7xl mb-6">🌊</div>
+                <h3 class="text-3xl font-semibold mb-2">Vibraciones y ondas</h3>
+                <p class="text-gray-400 mb-6">Movimiento armónico simple, ondas mecánicas, sonido, interferencias, difracción, ondas electromagnéticas y óptica geométrica.</p>
+                <div class="text-[#00f0ff] text-sm font-medium">6 temas • Ver contenido <i class="fas fa-arrow-right"></i></div>
+            </div>
+
+            <!-- Bloque 4: Física moderna -->
+            <div onclick="showTopicModal(4)" class="card-hover bg-[#111827] border border-[#00f0ff]/20 rounded-3xl p-8 cursor-pointer">
+                <div class="text-7xl mb-6">⚛️</div>
+                <h3 class="text-3xl font-semibold mb-2">Física moderna</h3>
+                <p class="text-gray-400 mb-6">Relatividad especial, dualidad onda-corpúsculo, efecto fotoeléctrico, principio de incertidumbre, física nuclear y modelo estándar de partículas.</p>
+                <div class="text-[#00f0ff] text-sm font-medium">5 temas • Ver contenido <i class="fas fa-arrow-right"></i></div>
+            </div>
         </div>
     </section>
-
     <!-- QUIZ - COMPLETO Y FUNCIONAL -->
     <section id="quiz" class="bg-[#0a0a2a] py-24">
         <div class="max-w-4xl mx-auto px-6">
@@ -119,18 +139,16 @@
                 <p class="text-gray-400">Quiz de 10 preguntas • Temario completo</p>
             </div>
             <div id="quiz-container" class="bg-[#111827] rounded-3xl p-10 shadow-2xl">
-
                 <!-- Pantalla inicial -->
                 <div id="quiz-start" class="text-center py-12">
                     <i class="fas fa-question-circle text-9xl text-[#00f0ff] mb-8"></i>
                     <h3 class="text-4xl font-semibold mb-6">¡Comienza el Quiz!</h3>
                     <p class="text-xl text-gray-400 mb-10">Responde correctamente y demuestra que dominas la Física</p>
-                    <button onclick="startQuiz()" 
+                    <button onclick="startQuiz()"
                             class="bg-[#00f0ff] text-[#0a0a2a] text-2xl font-bold px-16 py-6 rounded-3xl flex items-center gap-4 mx-auto hover:scale-105">
                         <i class="fas fa-play"></i> INICIAR QUIZ
                     </button>
                 </div>
-
                 <!-- Preguntas -->
                 <div id="quiz-questions" class="hidden">
                     <div class="flex justify-between mb-8">
@@ -143,23 +161,21 @@
                     <div id="options-container" class="grid grid-cols-1 gap-4"></div>
                     <div class="mt-10 flex justify-between items-center">
                         <div id="feedback" class="text-lg font-medium"></div>
-                        <button onclick="nextQuestion()" id="next-btn" 
+                        <button onclick="nextQuestion()" id="next-btn"
                                 class="hidden bg-[#00f0ff] text-[#0a0a2a] px-10 py-4 rounded-3xl font-semibold">SIGUIENTE →</button>
                     </div>
                 </div>
-
                 <!-- Resultados -->
                 <div id="quiz-results" class="hidden text-center py-12">
                     <div id="score-circle" class="mx-auto w-48 h-48 rounded-full border-8 border-[#00f0ff] flex items-center justify-center text-8xl font-bold mb-8"></div>
                     <h3 class="text-4xl font-bold mb-2">¡Tu puntuación!</h3>
                     <p id="result-text" class="text-2xl text-gray-400 mb-8"></p>
-                    <button onclick="restartQuiz()" 
+                    <button onclick="restartQuiz()"
                             class="bg-white text-[#0a0a2a] px-10 py-5 rounded-3xl font-semibold text-xl">VOLVER A INTENTARLO</button>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- CHATBOT (simple) -->
     <section id="chatbot" class="max-w-7xl mx-auto px-6 py-24">
         <div class="text-center mb-12">
@@ -178,8 +194,8 @@
                 </div>
             </div>
             <div class="p-5 border-t border-[#00f0ff]/20 flex gap-4">
-                <input id="chat-input" onkeydown="if(event.key === 'Enter') sendMessage()" 
-                       type="text" placeholder="Ej: ¿Cuál es la ley de gravitación universal?" 
+                <input id="chat-input" onkeydown="if(event.key === 'Enter') sendMessage()"
+                       type="text" placeholder="Ej: ¿Cuál es la ley de gravitación universal?"
                        class="flex-1 bg-white/10 border border-white/20 focus:border-[#00f0ff] rounded-3xl px-8 py-5 outline-none">
                 <button onclick="sendMessage()" class="bg-[#00f0ff] text-[#0a0a2a] w-14 h-14 rounded-3xl flex items-center justify-center text-3xl">
                     <i class="fas fa-paper-plane"></i>
@@ -187,23 +203,20 @@
             </div>
         </div>
     </section>
-
     <!-- FOOTER -->
     <footer class="bg-black py-12 border-t border-white/10">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <p class="text-gray-400">Página de Física 2º Bachillerato para GitHub Pages</p>
         </div>
     </footer>
-
     <!-- MODAL -->
-    <div id="topicModal" onclick="if(event.target.id === 'topicModal') hideTopicModal()" 
+    <div id="topicModal" onclick="if(event.target.id === 'topicModal') hideTopicModal()"
          class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-[9999] flex items-center justify-center">
         <div onclick="event.stopImmediatePropagation()" class="modal bg-[#111827] max-w-2xl w-full mx-4 rounded-3xl p-10">
             <div id="modal-content"></div>
             <button onclick="hideTopicModal()" class="mt-8 mx-auto block text-[#00f0ff]">CERRAR</button>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
